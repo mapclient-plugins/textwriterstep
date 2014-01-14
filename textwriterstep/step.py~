@@ -22,7 +22,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         self._configured = False # A step cannot be executed until it has been configured.
         self._category = 'General'
         # Add any other initialisation code here:
-	self.portData0 = ''
+	self.portData0 = None
 
         # Ports:
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
@@ -41,7 +41,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
 	textfile = open("log.txt", "a")
-	textfile.write(%portData0)
+	textfile.write(%self.portData0)
 	textfile.close()
 
         self._doneExecution()
