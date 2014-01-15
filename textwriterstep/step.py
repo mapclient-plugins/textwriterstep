@@ -22,7 +22,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         self._configured = False # A step cannot be executed until it has been configured.
         self._category = 'General'
         # Add any other initialisation code here:
-	self.portData0 = None
+        self.portData0 = None
 
         # Ports:
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
@@ -40,9 +40,9 @@ class TextWriterStep(WorkflowStepMountPoint):
         may be connected up to a button in a widget for example.
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
-	textfile = open("log.txt", "a")
-	textfile.write(self.portData0)
-	textfile.close()
+    	textfile = open("log.txt", "a")
+    	textfile.write(self.portData0)
+    	textfile.close()
 
         self._doneExecution()
 
@@ -52,7 +52,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
         '''
-	self.portData0 = dataIn # String
+        self.portData0 = dataIn # String
 
 
     def configure(self):
