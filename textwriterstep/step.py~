@@ -41,7 +41,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
 	textfile = open("log.txt", "a")
-	textfile.write(%self.portData0)
+	textfile.write(self.portData0)
 	textfile.close()
 
         self._doneExecution()
