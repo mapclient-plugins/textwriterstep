@@ -40,7 +40,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         may be connected up to a button in a widget for example.
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
-    	textfile = open("log.txt", "a")
+    	textfile = open(self._config['filename'], "a")
     	textfile.write(self.portData0)
     	textfile.close()
 
