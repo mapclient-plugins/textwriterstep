@@ -13,8 +13,7 @@ from textwriterstep.configuredialog import ConfigureDialog
 
 class TextWriterStep(WorkflowStepMountPoint):
     '''
-    Skeleton step which is intended to be a helpful starting point
-    for new steps.
+    Step for writing a string to file.
     '''
 
     def __init__(self, location):
