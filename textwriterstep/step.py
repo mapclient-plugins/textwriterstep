@@ -4,8 +4,7 @@ MAP Client Plugin Step
 '''
 import os
 
-from PySide import QtGui
-from PySide import QtCore
+from PySide2 import QtCore
 
 from mountpoints.workflowstep import WorkflowStepMountPoint
 from textwriterstep.configuredialog import ConfigureDialog
