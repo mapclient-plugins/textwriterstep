@@ -5,8 +5,8 @@ import os
 
 from PySide2 import QtCore
 
-from mountpoints.workflowstep import WorkflowStepMountPoint
-from textwriterstep.configuredialog import ConfigureDialog
+from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
+from mapclientplugins.textwriterstep.configuredialog import ConfigureDialog
 
 
 class TextWriterStep(WorkflowStepMountPoint):
