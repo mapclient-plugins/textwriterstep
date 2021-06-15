@@ -1,14 +1,12 @@
-
 '''
 MAP Client Plugin Step
 '''
 import os
 
-from PySide import QtGui
-from PySide import QtCore
+from PySide2 import QtCore
 
-from mountpoints.workflowstep import WorkflowStepMountPoint
-from textwriterstep.configuredialog import ConfigureDialog
+from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
+from mapclientplugins.textwriterstep.configuredialog import ConfigureDialog
 
 
 class TextWriterStep(WorkflowStepMountPoint):
@@ -18,7 +16,7 @@ class TextWriterStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(TextWriterStep, self).__init__('TextWriter', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'General'
         # Add any other initialisation code here:
         self.portData0 = None
@@ -31,7 +29,6 @@ class TextWriterStep(WorkflowStepMountPoint):
         self._config['identifier'] = ''
         self._config['filename'] = ' '
 
-
     def execute(self):
         '''
         Add your code here that will kick off the execution of the step.
@@ -39,9 +36,9 @@ class TextWriterStep(WorkflowStepMountPoint):
         may be connected up to a button in a widget for example.
         '''
         # Put your execute step code here before calling the '_doneExecution' method.
-    	textfile = open(self._config['filename'], "a")
-    	textfile.write(self.portData0)
-    	textfile.close()
+        textfile = open(self._config['filename'], "a")
+        textfile.write(self.portData0)
+        textfile.close()
 
         self._doneExecution()
 
@@ -51,8 +48,7 @@ class TextWriterStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
         '''
-        self.portData0 = dataIn # String
-
+        self.portData0 = dataIn  # String
 
     def configure(self):
         '''
@@ -62,15 +58,15 @@ class TextWriterStep(WorkflowStepMountPoint):
         then set:
             self._configured = True
         '''
-        dlg = ConfigureDialog()
+        dlg = ConfigureDialog(self._main_window)
         dlg.identifierOccursCount = self._identifierOccursCount
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
-        
+
         if dlg.exec_():
             self._config = dlg.getConfig()
-        
+
         self._configured = dlg.validate()
         self._configuredObserver()
 
@@ -101,7 +97,6 @@ class TextWriterStep(WorkflowStepMountPoint):
         conf.setValue('filename', self._config['filename'])
         conf.endGroup()
 
-
     def deserialize(self, location):
         '''
         Add code to deserialize this step from disk.  As with the serialize 
@@ -120,5 +115,3 @@ class TextWriterStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-
-
